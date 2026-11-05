@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Instagram</title>
+
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+    <div class="container">
+
+        <!-- Profile Section -->
+        <div class="profile">
+            <div class="profile-pic">👩🏻</div>
+
+            <div class="profile-info">
+                <h1>arpita</h1>
+
+                <div class="stats">
+                    <span><b><%= posts.length %></b> posts</span>
+                    <span><b><b>120</b></b> followers</span>
+                    <span><b><b>150</b></b> following</span>
+                </div>
+
+                <p>Welcome to my mini Instagram page 📸</p>
+                <a href = "/posts/new">Create new Post</a>
+            </div>
+        </div>
+
+        <!-- Posts Section -->
+        <h2>My Posts</h2>
+
+        <div class="posts">
+            <% for (let post of posts) { %>
+                <div >
+                    <img class="post" src="<%= post.image %>" alt="Post image">
+
+                    <p>
+                        <b>@<%= post.username %></b>
+                        <%= post.caption %>
+                    </p>
+                    <a href="http://localhost:8080/posts/<%=post.id%>/edit">Edit</a>
+                    <form method="POST" action="/posts/<%= post.id %>?_method=DELETE">
+                        <button>Delete</button>
+                    </form>
+                </div>
+            <% } %>
+        </div>
+
+    </div>
+</body>
+</html>
